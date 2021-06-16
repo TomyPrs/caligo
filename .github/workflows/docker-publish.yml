@@ -1,0 +1,42 @@
+name: Docker Base Image Builds
+
+on:
+  push:
+    branches:
+      - dev
+    tags:
+      - v*
+env:
+  IMAGE: 'ghcr.io/${{ github.repository }}'
+
+jobs:
+  build:
+    name: Docker image Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Login to ghcr.io registry
+        run: 'docker login https://ghcr.io -u token -p ${{ secrets.GH_TOKEN }}'
+      - name: Build and Push image
+        run: >
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+
+
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION
+          | sed -e 's/^v//')
+
+
+          echo VERSION=$VERSION
+
+          echo "Building"
+
+          docker build . -f resources/Dockerfile -t ${{ env.IMAGE }}:$VERSION
+
+          [ "$VERSION" == "main" ] && docker tag ${{ env.IMAGE }}:$VERSION ${{
+          env.IMAGE }}:latest
+
+
+          echo "Pushing"
+
+
+          docker push --all-tags ${{ env.IMAGE }}
