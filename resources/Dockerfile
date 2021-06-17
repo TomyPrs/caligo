@@ -85,7 +85,7 @@ COPY --from=python-build /opt/venv /opt/venv
 ENV CONTAINER="True"
 
 # Clone the repo so update works
-RUN git clone https://github.com/adekmaulana/caligo /home/caligo
+RUN git clone https://github.com/tomyprs/caligo /home/caligo
 RUN chmod +x /home/caligo/bot
 RUN cp /home/caligo/bot /usr/local/bin
 
