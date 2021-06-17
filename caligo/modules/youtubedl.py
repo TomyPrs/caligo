@@ -250,7 +250,7 @@ class YouTube(module.Module):
             "nocheckcertificate":
                 True,
             "outtmpl":
-                os.path.join(self.bot.getConfig.downloadPath, rnd_key,
+                os.path.join(self.bot.getConfig.download_path, rnd_key,
                              "%(title)s-%(format)s.%(ext)s"),
             "logger":
                 self.log,
@@ -279,7 +279,7 @@ class YouTube(module.Module):
                                prog_func):
         options = {
             "outtmpl":
-                os.path.join(self.bot.getConfig.downloadPath, rnd_key,
+                os.path.join(self.bot.getConfig.download_path, rnd_key,
                              "%(title)s-%(format)s.%(ext)s"),
             "logger":
                 self.log,
@@ -459,7 +459,7 @@ class YouTube(module.Module):
                                      downtype="video")
         await ctx.respond("Done. Uploading ...")
         for file in glob(
-                os.path.join(self.bot.getConfig.downloadPath, rnd_id, "*")):
+                os.path.join(self.bot.getConfig.download_path, rnd_id, "*")):
             # Exclude incomplete files and thumb
             if not file.lower().endswith((".jpg", ".png", ".webp", ".part")):
                 media_file = file
