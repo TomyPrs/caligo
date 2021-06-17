@@ -70,6 +70,7 @@ beautifulsoup4 = "^4.9.3"
 youtube_dl = "^2021.6.6"
 youtube-search-python = "^1.4.5"
 cloudscraper = "^1.2.58"
+ujson = "^4.0.2"
 
 [tool.poetry.dev-dependencies]
 isort = {version = "^5.7.0", extras = ["pyproject"]}
