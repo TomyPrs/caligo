@@ -73,7 +73,7 @@ cloudscraper = "^1.2.58"
 ujson = "^4.0.2"
 
 [tool.poetry.dev-dependencies]
-isort = {version = "^5.7.0", extras = ["pyproject"]}
+isort = {version = "^5.9.2", extras = ["pyproject"]}
 mypy = "^0.902"
 pre-commit = "^2.13.0"
 yapf = "^0.31.0"
